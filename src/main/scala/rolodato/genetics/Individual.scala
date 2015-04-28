@@ -1,5 +1,7 @@
 package rolodato.genetics
 
+import scala.language.postfixOps
+
 trait Individual {
   def fitness: Double
   def string: List[Int]

@@ -2,6 +2,7 @@ package rolodato.genetics
 
 import RouletteSelection._
 
+import scala.language.postfixOps
 import scala.util.Random
 
 trait RouletteSelection {

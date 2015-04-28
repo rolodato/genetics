@@ -1,5 +1,7 @@
 package rolodato.genetics
 
+import scala.language.postfixOps
+
 object OnePointCrossover {
   // TODO Allow passing Random as crossover value
   def cross(i1: Individual, i2: Individual, xop: Int): Set[Individual] = {
