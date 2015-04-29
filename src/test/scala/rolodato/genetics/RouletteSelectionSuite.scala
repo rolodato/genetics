@@ -4,8 +4,13 @@ import rolodato.genetics.RouletteSelection._
 
 class RouletteSelectionSuite extends UnitSpec {
 
-  val population = List(61.0, 11.0, 33.0, 25.0, 44.0, 15.0, 17.0)
-  val normalized = normalize(population)
+  val fitness = List(61.0, 11.0, 33.0, 25.0, 44.0, 15.0, 17.0)
+  val normalized = normalize(fitness)
+  val population = fitness map individual
+
+  test("sample roulette with fixed r value is chosen correctly") {
+    assert(select(population, 0.5).fitness === 33.0)
+  }
 
   test("accumulated normalized fitnesses is calculated correctly") {
     val expected = List(0.2961, 0.3495, 0.5097, 0.6311, 0.8447, 0.9175, 1.0)
