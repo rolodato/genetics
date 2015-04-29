@@ -18,10 +18,3 @@ trait Individual {
     }
   }
 }
-
-object Individual {
-  def apply(stringInts: Int*) = new Individual {
-    override def string = stringInts toList
-    override def fitness = 1
-  }
-}

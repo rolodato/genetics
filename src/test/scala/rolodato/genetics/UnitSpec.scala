@@ -3,6 +3,8 @@ package rolodato.genetics
 import org.scalactic.{Equivalence, TolerantNumerics, TypeCheckedTripleEquals}
 import org.scalatest.FunSuite
 
+import scala.language.postfixOps
+
 abstract class UnitSpec extends FunSuite with TypeCheckedTripleEquals {
   implicit val doubleEq = TolerantNumerics.tolerantDoubleEquality(0.001)
 
@@ -14,5 +16,15 @@ abstract class UnitSpec extends FunSuite with TypeCheckedTripleEquals {
         case _ => false
       }
     }
+  }
+
+  def individual(s: Int*) = new Individual {
+    def string: List[Int] = s toList
+    def fitness: Double = 1.0
+  }
+
+  def individual(fit: Double) = new Individual {
+    def string: List[Int] = List(1, 2, 3)
+    def fitness: Double = fit
   }
 }
