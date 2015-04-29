@@ -1,6 +1,6 @@
 package rolodato.genetics
 
 trait Mutation {
-  val mutationProbability: Double
+  def mutationProbability: Double
   def mutate(i: Individual): Individual
 }
