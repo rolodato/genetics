@@ -1,11 +1,9 @@
 package rolodato.genetics
 
-import RouletteSelection._
-
 import scala.language.postfixOps
 import scala.util.Random
 
-trait RouletteSelection {
+object RouletteSelection {
   def select(population: List[Individual]): Individual = {
     // TODO How to test this? Generators + proportions of results?
     val fits = normalize(population map (_.fitness))
@@ -19,9 +17,7 @@ trait RouletteSelection {
     // find returns Option, but this should never fail
     (sortedPop zip accFits find (_._2 > Random.nextDouble)).get._1
   }
-}
 
-object RouletteSelection {
   def accumulatedFitness(fits: List[Double]): List[Double] = {
     (fits zipWithIndex) map { case (fit, i) =>
       // Own fitness value + fitness values of predecessors
