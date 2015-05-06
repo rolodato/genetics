@@ -4,7 +4,7 @@ import scala.language.postfixOps
 import scala.util.Random
 
 object OnePointCrossover {
-  def cross(i1: Individual, i2: Individual, xop: Int = Random.nextInt()) = {
+  def cross[T](i1: Individual[T], i2: Individual[T], xop: Int = Random.nextInt()): Set[Individual[T]] = {
     assert(i1.length == i2.length, "individuals must have equal length strings")
     val child1 = ((i1 string) take xop) ++ ((i2 string) drop xop)
     val child2 = ((i2 string) take xop) ++ ((i1 string) drop xop)

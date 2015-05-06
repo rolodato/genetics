@@ -4,7 +4,7 @@ import scala.language.postfixOps
 import scala.util.Random
 
 object RouletteSelection {
-  def select(pop: List[Individual], r: Double = Random.nextDouble()): Individual = {
+  def select[T](pop: List[Individual[T]], r: Double = Random.nextDouble()): Individual[T] = {
     val fits = accumulatedFitness(normalize(pop map (_.fitness)))
     // find returns Option, but this should never fail
     (pop zip fits find (_._2 > r)).get._1
