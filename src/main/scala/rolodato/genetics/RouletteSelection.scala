@@ -8,7 +8,7 @@ object RouletteSelection {
   def select[T](pop: List[Individual[T]], r: Double = Random.nextDouble()): Individual[T] = {
     assert(pop.nonEmpty, "can't select from an empty population")
     val fits = accumulatedFitness(normalize(pop map (_.fitness)))
-    (pop zip fits find (_._2 >= r)) match {
+    pop zip fits find (_._2 >= r) match {
       case Some((ind, fit)) => ind
       // If fitnesses can't be normalized, return the first element
       case None => pop.head
