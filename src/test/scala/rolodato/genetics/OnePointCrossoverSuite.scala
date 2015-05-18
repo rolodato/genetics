@@ -7,6 +7,6 @@ class OnePointCrossoverSuite extends UnitSpec {
     val children = OnePointCrossover.cross(parent1, parent2, 2)
     val child1 = individual(1, 2, 3, 2, 1)
     val child2 = individual(5, 4, 3, 4, 5)
-    assert(children === Set(child1, child2))
+    assert(children === List(child1, child2))
   }
 }
