@@ -5,7 +5,7 @@ import scala.language.postfixOps
 import scala.util.Random
 
 object RouletteSelection {
-  def select[T](pop: List[Individual[T]], r: Double = Random.nextDouble()): Individual[T] = {
+  def select[T <: Individual[_]](pop: List[T], r: Double = Random.nextDouble()): T = {
     assert(pop.nonEmpty, "can't select from an empty population")
     val fits = accumulatedFitness(normalize(pop map (_.fitness)))
     pop zip fits find (_._2 >= r) match {
@@ -15,9 +15,9 @@ object RouletteSelection {
     }
   }
 
-  def selectPopulation[T](pop: List[Individual[T]], amount: Int): List[Individual[T]] = {
+  def selectPopulation[T <: Individual[_]](pop: List[T], amount: Int): List[T] = {
     assert(amount <= pop.length, "can't select more individuals than members")
-    var acc = ArrayBuffer[Individual[T]]()
+    var acc = ArrayBuffer[T]()
     val popCopy = pop.toBuffer
     while (acc.length < amount) {
       val selected = select(popCopy.toList)
