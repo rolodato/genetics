@@ -2,13 +2,13 @@ package rolodato.genetics
 
 import scala.language.postfixOps
 
-trait Individual[T] {
+trait Individual[+T] {
   def fitness: Double
   def string: List[T]
   def length: Int = string length
-  def copy(newString: List[T]): Individual[T] = new Individual[T] {
+  def copy[S >: T](newString: List[S]): Individual[S] = new Individual[S] {
     def fitness: Double = Individual.this.fitness
-    def string: List[T] = newString
+    def string: List[S] = newString
   }
   override def toString = string toString
   override def equals(other: Any) = {
