@@ -11,5 +11,9 @@ object OnePointCrossover {
     List(i1.copy(child1), i2.copy(child2))
   }
 
-
+  def crossAll[T](pop: List[Individual[T]], xop: Int = Random.nextInt()): List[Individual[T]] = pop match {
+    case Nil => Nil
+    case x :: y :: is => cross(x, y, xop) ++ crossAll(is)
+    case List(x) => List(x)
+  }
 }
