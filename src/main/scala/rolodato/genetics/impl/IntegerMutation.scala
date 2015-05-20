@@ -6,7 +6,12 @@ import scala.util.Random
 
 trait IntegerMutation extends Mutation {
 
-  def mutationPercentage: Double
+  /**
+   * The proportion by which to scale the mutated element of the gene's
+   * string. Should be a value between 0 and 1.0 inclusive.
+   */
+
+  def mutationProportion: Double
 
   /**
    * Mutates one randomly chosen element of a gene's string. The element is
@@ -20,7 +25,7 @@ trait IntegerMutation extends Mutation {
         if (Random.nextBoolean()) 1
         else -1
       }
-      val newValue: Int = (current + sign * current * mutationPercentage).toInt
+      val newValue: Int = (current + sign * current * mutationProportion).toInt
       gene.string.updated(elem, newValue)
     }
   }
@@ -28,7 +33,7 @@ trait IntegerMutation extends Mutation {
 }
 
 object IntegerMutation {
-  def apply(percentage: Double) = new IntegerMutation {
-    def mutationPercentage: Double = percentage
+  def apply(proportion: Double) = new IntegerMutation {
+    def mutationProportion: Double = proportion
   }
 }
