@@ -37,4 +37,6 @@ object OnePointCrossover {
   def apply(xop: Int) = new OnePointCrossover {
     override def crossoverPoint: Int = xop
   }
+
+  def apply() = new OnePointCrossover {}
 }

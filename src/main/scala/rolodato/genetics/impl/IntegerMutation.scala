@@ -33,4 +33,6 @@ object IntegerMutation {
   def apply(proportion: Double) = new IntegerMutation {
     override def mutationProportion: Double = proportion
   }
+
+  def apply() = new IntegerMutation {}
 }
