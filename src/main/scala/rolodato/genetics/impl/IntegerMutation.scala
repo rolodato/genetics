@@ -10,19 +10,17 @@ trait IntegerMutation extends Mutation {
 
   def mutate(i: Gene): Gene = {
     val elem = Random.nextInt(i.length)
-    new Gene {
-      def fitness: Double = i.fitness
-      def string: List[Int] = {
-        val current = i.string(elem)
-        val sign = {
-          if (Random.nextBoolean()) 1
-          else -1
-        }
-        val newValue: Int = (current + sign * current * mutationPercentage).toInt
-        i.string.updated(elem, newValue)
+    i.copy {
+      val current = i.string(elem)
+      val sign = {
+        if (Random.nextBoolean()) 1
+        else -1
       }
+      val newValue: Int = (current + sign * current * mutationPercentage).toInt
+      i.string.updated(elem, newValue)
     }
   }
+
 }
 
 object IntegerMutation {
