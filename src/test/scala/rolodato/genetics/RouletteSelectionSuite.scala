@@ -9,7 +9,7 @@ class RouletteSelectionSuite extends UnitSpec {
   val population = fitness map individual
 
   test("sample roulette with fixed r value is chosen correctly") {
-    assert(select(population, 0.5).fitness === 33.0)
+    assert(RouletteSelection(0.5).select(population).fitness === 33.0)
   }
 
   test("accumulated normalized fitnesses is calculated correctly") {
@@ -31,7 +31,7 @@ class RouletteSelectionSuite extends UnitSpec {
   test("roulette selection picks the best individual") {
     val fitness = List(100.0, 0.0, 0.0)
     val population = fitness map individual
-    assert(selectPopulation(population, 2).length === 2)
-    assert(selectPopulation(population, 1).head.fitness === 100.0)
+    assert(RouletteSelection().selectPopulation(population, 2).length === 2)
+    assert(RouletteSelection().selectPopulation(population, 1).head.fitness === 100.0)
   }
 }

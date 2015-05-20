@@ -1,30 +1,36 @@
 package rolodato.genetics
 
-import scala.collection.mutable.ArrayBuffer
 import scala.language.postfixOps
 import scala.util.Random
 
-object RouletteSelection {
-  def select(pop: List[Gene], r: Double = Random.nextDouble()): Gene = {
+trait RouletteSelection extends Selection {
+  import RouletteSelection._
+
+  def rand: Double
+
+  def select(pop: List[Gene]): Gene = {
     require(pop.nonEmpty, "can't select from an empty population")
     val fits = accumulatedFitness(normalize(pop map (_.fitness)))
-    pop zip fits find (_._2 >= r) match {
+    pop zip fits find (_._2 >= rand) match {
       case Some((ind, fit)) => ind
-      // If fitnesses can't be normalized, return the first element
       case None => pop.head
     }
   }
+}
 
-  def selectPopulation(pop: List[Gene], amount: Int): List[Gene] = {
-    require(amount <= pop.length, "can't select more individuals than members")
-    var acc = ArrayBuffer[Gene]()
-    val popCopy = pop.toBuffer
-    while (acc.length < amount) {
-      val selected = select(popCopy.toList)
-      popCopy -= selected
-      acc += selected
-    }
-    acc.toList
+object RouletteSelection {
+  def apply(rng: => Double) = new RouletteSelection {
+    override def rand: Double = rng
+  }
+
+  def apply() = new RouletteSelection {
+    override def rand = Random.nextDouble()
+  }
+
+  def normalize(fitnesses: List[Double]): List[Double] = {
+    val total = fitnesses.sum
+    if (total != 0) fitnesses map (_ / total)
+    else fitnesses
   }
 
   def accumulatedFitness(fits: List[Double]): List[Double] = {
@@ -32,11 +38,5 @@ object RouletteSelection {
       // Own fitness value + fitness values of predecessors
       fit + (fits take i sum)
     }
-  }
-
-  def normalize(fitnesses: List[Double]): List[Double] = {
-    val total = fitnesses.sum
-    if (total != 0) fitnesses map (_ / total)
-    else fitnesses
   }
 }
