@@ -11,3 +11,7 @@ The following operators are implemented:
 * [One-point crossover](src/test/scala/rolodato/genetics/impl/OnePointCrossoverSuite.scala)
 * [Bit string mutation](src/test/scala/rolodato/genetics/impl/BitStringMutationSuite.scala)
 * [Proportional integer mutation](src/test/scala/rolodato/genetics/impl/IntegerMutationSuite.scala)
+
+# Usage
+
+See [this test](src/test/scala/rolodato/genetics/GeneticSpec.scala) for a practical example.
