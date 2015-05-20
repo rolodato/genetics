@@ -33,7 +33,7 @@ trait Gene {
    * strings and fitness values may not necessarily be equal.
    * @param other another object to compare with
    * @return `true` if both genes have equal strings and fitness values,
-   *        `false` otherwise.
+   *         `false` otherwise.
    */
   override def equals(other: Any) = {
     other match {

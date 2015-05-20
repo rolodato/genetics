@@ -6,6 +6,7 @@ import scala.language.postfixOps
 import scala.util.Random
 
 trait RouletteSelection extends Selection {
+
   import RouletteSelection._
 
   def rand: Double

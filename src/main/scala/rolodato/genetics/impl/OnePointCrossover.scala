@@ -8,8 +8,6 @@ import scala.util.Random
 
 trait OnePointCrossover extends Crossover {
 
-  def crossoverPoint: Int = Random.nextInt()
-
   /**
    * Given two parents, creates two children by applying a one-point
    * crossover algorithm.
@@ -26,6 +24,8 @@ trait OnePointCrossover extends Crossover {
     val child2 = ((parent2 string) take xop) ++ ((parent1 string) drop xop)
     List(parent1.copy(child1), parent2.copy(child2))
   }
+
+  def crossoverPoint: Int = Random.nextInt()
 
 }
 
