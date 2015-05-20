@@ -6,11 +6,11 @@ import scala.language.postfixOps
 trait Selection {
   protected def rand: Double
   def select(population: List[Gene]): Gene
-  def selectPopulation(pop: List[Gene], amount: Int): List[Gene] = {
-    require(0 < amount && amount <= pop.length, "invalid selection amount")
+  def selectPopulation(population: List[Gene], amount: Int): List[Gene] = {
+    require(0 < amount && amount <= population.length, "invalid selection amount")
     // TODO Make this declarative
     var acc = ArrayBuffer[Gene]()
-    val popCopy = pop.toBuffer
+    val popCopy = population.toBuffer
     while (acc.length < amount) {
       val selected = select(popCopy.toList)
       popCopy -= selected

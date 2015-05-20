@@ -10,12 +10,12 @@ trait RouletteSelection extends Selection {
 
   def rand: Double
 
-  def select(pop: List[Gene]): Gene = {
-    require(pop.nonEmpty, "can't select from an empty population")
-    val fits = accumulatedFitness(normalize(pop map (_.fitness)))
-    pop zip fits find (_._2 >= rand) match {
+  def select(population: List[Gene]): Gene = {
+    require(population.nonEmpty, "can't select from an empty population")
+    val fits = accumulatedFitness(normalize(population map (_.fitness)))
+    population zip fits find (_._2 >= rand) match {
       case Some((ind, fit)) => ind
-      case None => pop.head
+      case None => population.head
     }
   }
 }
