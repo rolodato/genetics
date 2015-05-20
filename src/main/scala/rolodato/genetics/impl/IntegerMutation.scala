@@ -11,7 +11,7 @@ trait IntegerMutation extends Mutation {
    * string. Should be a value between 0 and 1.0 inclusive.
    */
 
-  def mutationProportion: Double
+  def mutationProportion: Double = Random.nextDouble()
 
   /**
    * Mutates one randomly chosen element of a gene's string. The element is
@@ -34,6 +34,6 @@ trait IntegerMutation extends Mutation {
 
 object IntegerMutation {
   def apply(proportion: Double) = new IntegerMutation {
-    def mutationProportion: Double = proportion
+    override def mutationProportion: Double = proportion
   }
 }
