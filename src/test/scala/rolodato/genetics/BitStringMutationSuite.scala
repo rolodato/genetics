@@ -9,13 +9,8 @@ class BitStringMutationSuite extends UnitSpec {
     (xs zip ys) count { case (x, y) => x != y }
   }
 
-  test("bit string mutation with probability = 1") {
-    val mutated = BitStringMutation(ind, 1.0)
+  test("bit string mutation changes only one bit") {
+    val mutated = BitStringMutation(ind)
     assert(countDifferences(ind string, mutated string) === 1)
-  }
-
-  test("bit string mutation with probability = 0") {
-    val mutated = BitStringMutation(ind, 0.0)
-    assert(countDifferences(ind string, mutated string) === 0)
   }
 }
