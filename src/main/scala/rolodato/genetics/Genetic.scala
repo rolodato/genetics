@@ -17,8 +17,8 @@ trait Genetic {
     Seq.fill(populationSize)(randomGene()).toList
   }
 
-  def run(iterations: Int): List[Gene] = {
-    var population: List[Gene] = initialPopulation
+  def run(iterations: Int, initial: List[Gene] = initialPopulation): List[Gene] = {
+    var population: List[Gene] = initial
     val selectionSize = (population.length * selectionPercentage).toInt
     for (i <- 1 to iterations) {
       // Selection

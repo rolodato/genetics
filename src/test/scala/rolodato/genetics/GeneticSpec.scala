@@ -29,8 +29,9 @@ class GeneticSpec extends UnitSpec {
 
 
   test("genetic algorithm increases average fitness (flaky)") {
-    val initialFitness = avgFitness(TestGenetic.initialPopulation)
-    val finishedFitness = avgFitness(TestGenetic.run(20))
+    val initial = TestGenetic.initialPopulation
+    val initialFitness = avgFitness(initial)
+    val finishedFitness = avgFitness(TestGenetic.run(20, initial))
     assert(finishedFitness > initialFitness)
   }
 }
