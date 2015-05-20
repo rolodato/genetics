@@ -4,7 +4,7 @@ import scala.language.postfixOps
 
 trait Gene {
   def fitness: Double
-  def string: List[Int]
+  val string: List[Int]
   def length: Int = string length
   def copy(newString: List[Int]): Gene
   override def toString = string toString
