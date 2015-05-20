@@ -7,7 +7,7 @@ Currently only supports integer chromosome strings.
 
 The following operators are implemented:
 
-* [Roulette selection](src/main/scala/rolodato/genetics/impl/RouletteSelection.scala)
-* [One-point crossover](src/main/scala/rolodato/genetics/impl/OnePointCrossover.scala)
-* [Bit string mutation](src/main/scala/rolodato/genetics/impl/BitStringMutation.scala)
-* [Proportional integer mutation](src/main/scala/rolodato/genetics/impl/IntegerMutation.scala)
+* [Roulette selection](src/test/scala/rolodato/genetics/impl/RouletteSelectionSuite.scala)
+* [One-point crossover](src/test/scala/rolodato/genetics/impl/OnePointCrossoverSuite.scala)
+* [Bit string mutation](src/test/scala/rolodato/genetics/impl/BitStringMutationSuite.scala)
+* [Proportional integer mutation](src/test/scala/rolodato/genetics/impl/IntegerMutationSuite.scala)
