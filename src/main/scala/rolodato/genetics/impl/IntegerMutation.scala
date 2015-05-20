@@ -8,16 +8,16 @@ trait IntegerMutation extends Mutation {
 
   def mutationPercentage: Double
 
-  def mutate(i: Gene): Gene = {
-    val elem = Random.nextInt(i.length)
-    i.copy {
-      val current = i.string(elem)
+  def mutate(gene: Gene): Gene = {
+    val elem = Random.nextInt(gene.length)
+    gene.copy {
+      val current = gene.string(elem)
       val sign = {
         if (Random.nextBoolean()) 1
         else -1
       }
       val newValue: Int = (current + sign * current * mutationPercentage).toInt
-      i.string.updated(elem, newValue)
+      gene.string.updated(elem, newValue)
     }
   }
 
