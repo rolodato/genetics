@@ -1,4 +1,6 @@
-package rolodato.genetics
+package rolodato.genetics.impl
+
+import rolodato.genetics.{Crossover, Gene}
 
 import scala.language.postfixOps
 

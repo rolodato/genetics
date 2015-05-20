@@ -1,4 +1,6 @@
-package rolodato.genetics
+package rolodato.genetics.impl
+
+import rolodato.genetics.UnitSpec
 
 import scala.language.postfixOps
 

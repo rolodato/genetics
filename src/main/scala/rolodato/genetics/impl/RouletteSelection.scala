@@ -1,4 +1,6 @@
-package rolodato.genetics
+package rolodato.genetics.impl
+
+import rolodato.genetics.{Gene, Selection}
 
 import scala.language.postfixOps
 import scala.util.Random

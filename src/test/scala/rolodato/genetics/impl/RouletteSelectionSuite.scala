@@ -1,6 +1,7 @@
-package rolodato.genetics
+package rolodato.genetics.impl
 
-import rolodato.genetics.RouletteSelection._
+import rolodato.genetics.UnitSpec
+import rolodato.genetics.impl.RouletteSelection._
 
 class RouletteSelectionSuite extends UnitSpec {
 

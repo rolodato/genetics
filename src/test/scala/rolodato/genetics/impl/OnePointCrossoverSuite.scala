@@ -1,4 +1,6 @@
-package rolodato.genetics
+package rolodato.genetics.impl
+
+import rolodato.genetics.UnitSpec
 
 class OnePointCrossoverSuite extends UnitSpec {
 
