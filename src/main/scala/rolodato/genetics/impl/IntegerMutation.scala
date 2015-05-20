@@ -5,14 +5,6 @@ import rolodato.genetics.{Gene, Mutation}
 import scala.util.Random
 
 trait IntegerMutation extends Mutation {
-
-  /**
-   * The proportion by which to scale the mutated element of the gene's
-   * string. Should be a value between 0 and 1.0 inclusive.
-   */
-
-  def mutationProportion: Double = Random.nextDouble()
-
   /**
    * Mutates one randomly chosen element of a gene's string. The element is
    * either increased or decreased by the configured percentage.
@@ -30,6 +22,11 @@ trait IntegerMutation extends Mutation {
     }
   }
 
+  /**
+   * The proportion by which to scale the mutated element of the gene's
+   * string. Should be a value between 0 and 1.0 inclusive.
+   */
+  def mutationProportion: Double = Random.nextDouble()
 }
 
 object IntegerMutation {

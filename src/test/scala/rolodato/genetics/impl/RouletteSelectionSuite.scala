@@ -33,6 +33,7 @@ class RouletteSelectionSuite extends UnitSpec {
     val fitness = List(100.0, 0.0, 0.0)
     val population = fitness map individual
     assert(RouletteSelection().selectPopulation(population, 2).length === 2)
-    assert(RouletteSelection().selectPopulation(population, 1).head.fitness === 100.0)
+    assert(RouletteSelection().selectPopulation(population, 1).head.fitness
+      === 100.0)
   }
 }

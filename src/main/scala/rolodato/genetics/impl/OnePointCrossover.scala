@@ -7,7 +7,6 @@ import scala.math.abs
 import scala.util.Random
 
 trait OnePointCrossover extends Crossover {
-
   /**
    * Given two parents, creates two children by applying a one-point
    * crossover algorithm.
@@ -15,7 +14,8 @@ trait OnePointCrossover extends Crossover {
    * Unless overridden, the crossover point is chosen randomly.
    *
    * @return a list containing the resulting two children
-   * @see http://en.wikipedia.org/wiki/Crossover_%28genetic_algorithm%29#One-point_crossover
+   * @see http://en.wikipedia.org/wiki/Crossover_%28genetic_algorithm%29#One
+   *      -point_crossover
    */
   def cross(parent1: Gene, parent2: Gene): List[Gene] = {
     require(parent1.length == parent2.length, "gene lengths must be equal")
@@ -26,7 +26,6 @@ trait OnePointCrossover extends Crossover {
   }
 
   def crossoverPoint: Int = Random.nextInt()
-
 }
 
 object OnePointCrossover {
