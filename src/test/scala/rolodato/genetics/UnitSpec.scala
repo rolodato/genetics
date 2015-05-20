@@ -18,12 +18,12 @@ abstract class UnitSpec extends FunSuite with TypeCheckedTripleEquals {
     }
   }
 
-  def individual(s: Int*) = new Individual[Int] {
+  def individual(s: Int*) = new Gene {
     def string: List[Int] = s toList
     def fitness: Double = 1.0
   }
 
-  def individual(fit: Double) = new Individual[Int] {
+  def individual(fit: Double) = new Gene {
     def string: List[Int] = List(1, 2, 3)
     def fitness: Double = fit
   }

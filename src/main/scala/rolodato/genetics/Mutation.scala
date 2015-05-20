@@ -1,6 +1,6 @@
 package rolodato.genetics
 
-trait Mutation[T] {
+trait Mutation {
   def mutationProbability: Double
-  def mutate(i: Individual[T]): Individual[T]
+  def mutate(i: Gene): Gene
 }
