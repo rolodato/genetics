@@ -6,7 +6,7 @@ import scala.util.Random
 
 object RouletteSelection {
   def select(pop: List[Gene], r: Double = Random.nextDouble()): Gene = {
-    assert(pop.nonEmpty, "can't select from an empty population")
+    require(pop.nonEmpty, "can't select from an empty population")
     val fits = accumulatedFitness(normalize(pop map (_.fitness)))
     pop zip fits find (_._2 >= r) match {
       case Some((ind, fit)) => ind
@@ -16,7 +16,7 @@ object RouletteSelection {
   }
 
   def selectPopulation(pop: List[Gene], amount: Int): List[Gene] = {
-    assert(amount <= pop.length, "can't select more individuals than members")
+    require(amount <= pop.length, "can't select more individuals than members")
     var acc = ArrayBuffer[Gene]()
     val popCopy = pop.toBuffer
     while (acc.length < amount) {
