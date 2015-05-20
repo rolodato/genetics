@@ -1,4 +1,4 @@
-# genetics
+# genetics [![Build Status](https://travis-ci.org/rolodato/genetics.svg?branch=master)](https://travis-ci.org/rolodato/genetics)
 
 Implement genetic algorithms in Scala.
 This is only a learning project, not guaranteed to be correct, efficient or fast.
