@@ -1,6 +1,7 @@
 package rolodato.genetics.impl
 
-import rolodato.genetics.{StringGene, UnitSpec}
+import rolodato.genetics.UnitSpec
+import rolodato.genetics.util.StringGene
 
 class IntegerMutationSuite extends UnitSpec {
   test("integer mutation sanity check") {

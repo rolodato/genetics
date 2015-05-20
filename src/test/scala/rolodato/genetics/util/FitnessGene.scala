@@ -1,4 +1,6 @@
-package rolodato.genetics
+package rolodato.genetics.util
+
+import rolodato.genetics.Gene
 
 class FitnessGene(val fitness: Double) extends Gene {
 

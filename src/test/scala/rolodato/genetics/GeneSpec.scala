@@ -1,5 +1,7 @@
 package rolodato.genetics
 
+import rolodato.genetics.util.StringGene
+
 class GeneSpec extends UnitSpec {
   test("result of Gene.copy doesn't inherit parent's fitness") {
     val parent = new StringGene(List(0))
