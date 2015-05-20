@@ -2,7 +2,7 @@ package rolodato.genetics
 
 import org.scalactic.{Equivalence, TolerantNumerics, TypeCheckedTripleEquals}
 import org.scalatest.FunSuite
-import rolodato.genetics.util.StringGene
+import rolodato.genetics.util.{FitnessGene, StringGene}
 
 import scala.language.postfixOps
 
