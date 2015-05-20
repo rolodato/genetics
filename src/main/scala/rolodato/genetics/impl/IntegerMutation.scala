@@ -8,6 +8,10 @@ trait IntegerMutation extends Mutation {
 
   def mutationPercentage: Double
 
+  /**
+   * Mutates one randomly chosen element of a gene's string. The element is
+   * either increased or decreased by the configured percentage.
+   */
   def mutate(gene: Gene): Gene = {
     val elem = Random.nextInt(gene.length)
     gene.copy {
