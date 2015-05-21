@@ -10,6 +10,7 @@ lazy val root = project.in(file(".")).
 lazy val genetics = crossProject.in(file(".")).
   settings(
     name := "genetics",
+    organization := "rolodato",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := "2.11.6"
   ).
