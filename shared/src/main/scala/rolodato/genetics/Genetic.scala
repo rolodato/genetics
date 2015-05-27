@@ -49,8 +49,8 @@ trait Genetic {
           val pos = rng.nextInt(populationSize)
           population = population.updated(pos, mutation.mutate(population(pos)))
         }
+        fitnesses += avgFitness(population)
       }
-      fitnesses += avgFitness(population)
       new GeneticResult {
         val finalPopulation = population.sortBy(_.fitness).toList
         val fitnessEvolution = fitnesses.toList
