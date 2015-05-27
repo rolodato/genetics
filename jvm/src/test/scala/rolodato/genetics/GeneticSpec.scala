@@ -3,6 +3,9 @@ package rolodato.genetics
 import rolodato.genetics.impl.{IntegerMutation, OnePointCrossover, RouletteSelection}
 import rolodato.genetics.util.FitnessGene
 
+import scala.concurrent.Await
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 import scala.language.postfixOps
 import scala.util.Random
 
@@ -31,7 +34,7 @@ class GeneticSpec extends UnitSpec {
   test("genetic algorithm increases average fitness (flaky)") {
     val initial = TestGenetic.initialPopulation
     val initialFitness = avgFitness(initial)
-    val finishedFitness = avgFitness(TestGenetic.run(20, initial))
+    val finishedFitness = avgFitness(Await.result(TestGenetic.run(30, initial), 1 minute))
     assert(finishedFitness > initialFitness)
   }
 }
