@@ -52,7 +52,7 @@ trait Genetic {
         fitnesses += avgFitness(population)
       }
       new GeneticResult {
-        val finalPopulation = population.sortBy(_.fitness).toList
+        val finalPopulation = population.sortBy(-_.fitness).toList
         val fitnessEvolution = fitnesses.toList
       }
     }
