@@ -10,7 +10,7 @@ import scala.language.postfixOps
 import scala.util.Random
 
 class GeneticSpec extends UnitSpec {
-  def avgFitness[T](pop: List[Gene]): Double = {
+  def avgFitness(pop: Seq[Gene]): Double = {
     val fitnessList = pop map (_.fitness)
     val length = fitnessList.length
     if (length != 0)
@@ -34,7 +34,7 @@ class GeneticSpec extends UnitSpec {
   test("genetic algorithm increases average fitness (flaky)") {
     val initial = TestGenetic.initialPopulation
     val initialFitness = avgFitness(initial)
-    val finishedFitness = avgFitness(Await.result(TestGenetic.run(30, initial), 1 minute))
+    val finishedFitness = avgFitness(Await.result(TestGenetic.run(30, initial), 1 minute).finalPopulation)
     assert(finishedFitness > initialFitness)
   }
 }

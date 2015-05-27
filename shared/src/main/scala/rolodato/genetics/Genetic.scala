@@ -1,6 +1,8 @@
 package rolodato.genetics
 
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.{ExecutionContext, Promise, Future}
+import scala.language.postfixOps
 import scala.util.Random
 
 trait Genetic {
@@ -19,14 +21,22 @@ trait Genetic {
   }
 
   def run(iterations: Int, initial: List[Gene] = initialPopulation)
-         (implicit ec: ExecutionContext): Future[List[Gene]] = {
-    val p = Promise[List[Gene]]()
+         (implicit ec: ExecutionContext): Future[GeneticResult] = {
+    def avgFitness(pop: Seq[Gene]): Double = {
+      val fitnessList = pop map (_.fitness)
+      val length = fitnessList.length
+      if (length != 0)
+        (fitnessList sum) / length
+      else
+        0
+    }
     Future {
-      var population: List[Gene] = initial
+      var population = initial.to[ListBuffer]
+      var fitnesses = ListBuffer[Double]()
       val selectionSize = (population.length * selectionPercentage).toInt
       for (i <- 1 to iterations) {
         // Selection
-        population = selection.selectPopulation(population, selectionSize)
+        population = selection.selectPopulation(population, selectionSize).to[ListBuffer]
         // Crossover
         while (population.length < populationSize) {
           population ++= crossover.crossAll(population)
@@ -40,7 +50,11 @@ trait Genetic {
           population = population.updated(pos, mutation.mutate(population(pos)))
         }
       }
-      population.sortBy(_.fitness)
+      fitnesses += avgFitness(population)
+      new GeneticResult {
+        val finalPopulation = population.sortBy(_.fitness).toList
+        val fitnessEvolution = fitnesses.toList
+      }
     }
   }
 

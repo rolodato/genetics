@@ -11,7 +11,7 @@ trait RouletteSelection extends Selection {
 
   def rand: Double
 
-  def select(population: List[Gene]): Gene = {
+  def select(population: Seq[Gene]): Gene = {
     require(population.nonEmpty, "can't select from an empty population")
     val fits = accumulatedFitness(normalize(population map (_.fitness)))
     population zip fits find (_._2 >= rand) match {
@@ -30,13 +30,13 @@ object RouletteSelection {
     override def rand = Random.nextDouble()
   }
 
-  def normalize(fitnesses: List[Double]): List[Double] = {
+  def normalize(fitnesses: Seq[Double]): Seq[Double] = {
     val total = fitnesses.sum
     if (total != 0) fitnesses map (_ / total)
     else fitnesses
   }
 
-  def accumulatedFitness(fits: List[Double]): List[Double] = {
+  def accumulatedFitness(fits: Seq[Double]): Seq[Double] = {
     (fits zipWithIndex) map { case (fit, i) =>
       // Own fitness value + fitness values of predecessors
       fit + (fits take i sum)
