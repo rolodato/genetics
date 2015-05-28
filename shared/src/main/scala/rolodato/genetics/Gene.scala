@@ -42,3 +42,11 @@ trait Gene {
     }
   }
 }
+
+object Gene {
+  val DummyGene = new Gene {
+    def copy(newString: List[Int]): Gene = this
+    def fitness: Double = Double.NegativeInfinity
+    val string: List[Int] = List()
+  }
+}

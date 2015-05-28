@@ -34,6 +34,7 @@ trait Genetic {
       var population = initial.to[ListBuffer]
       var fitnesses = ListBuffer[Double]()
       val selectionSize = (population.length * selectionPercentage).toInt
+      var best: Gene = Gene.DummyGene
       for (i <- 1 to iterations) {
         // Selection
         population = selection.selectPopulation(population, selectionSize).to[ListBuffer]
@@ -50,10 +51,16 @@ trait Genetic {
           population = population.updated(pos, mutation.mutate(population(pos)))
         }
         fitnesses += avgFitness(population)
+        best = {
+          val currentBest = population.maxBy(_.fitness)
+          if (currentBest.fitness > best.fitness) currentBest
+          else best
+        }
       }
       new GeneticResult {
         val finalPopulation = population.sortBy(-_.fitness).toList
         val fitnessEvolution = fitnesses.toList
+        val fittest = best
       }
     }
   }
