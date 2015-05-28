@@ -13,9 +13,4 @@ class OnePointCrossoverSuite extends UnitSpec {
   test("simple crossover example with explicit xpoint works") {
     assert(children === List(child1, child2))
   }
-
-  test("simple crossover to population") {
-    val crossed = OnePointCrossover(2).crossAll(List(parent1, parent2))
-    assert(crossed.toSet === Set(child1, child2))
-  }
 }

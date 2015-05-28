@@ -1,5 +1,7 @@
 package rolodato.genetics
 
+import scala.util.Random
+
 trait Crossover {
   /**
    * Applies a crossover algorithm to two parents, and returns a list of
@@ -8,14 +10,18 @@ trait Crossover {
   def cross(parent1: Gene, parent2: Gene): Seq[Gene]
 
   /**
-   * Given a population, returns a new one which results from crossing the
-   * first gene with the second, the second with the third, and so on. The
-   * total size of the new population depends on how many children are
-   * returned by the implemented algorithm.
+   * Given a population, returns a new one which results from crossing two
+   * random genes, removing them and crossing the remaining genes until none
+   * remain.
    */
   def crossAll(pop: Seq[Gene]): Seq[Gene] = {
     if (pop.isEmpty) Seq()
     else if (pop.length == 1) Seq(pop.head)
-    else cross(pop(0), pop(1)) ++ crossAll(pop.drop(2))
+    else {
+      val parent1 = pop(Random.nextInt(pop.length))
+      val parent2 = pop(Random.nextInt(pop.length))
+      val remaining = pop.filter(g => g != parent1 && g != parent2)
+      cross(parent1, parent2) ++ crossAll(remaining)
+    }
   }
 }
