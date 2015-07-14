@@ -14,4 +14,5 @@ The following operators are implemented:
 
 # Usage
 
-See [this test](jvm/src/test/scala/rolodato/genetics/GeneticSpec.scala) for a practical example.
+* See [this test](jvm/src/test/scala/rolodato/genetics/GeneticSpec.scala) for a practical example
+* [Example using ScalaJS](https://github.com/rolodato/utn-ia)
