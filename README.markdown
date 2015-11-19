@@ -16,3 +16,8 @@ The following operators are implemented:
 
 * See [this test](jvm/src/test/scala/rolodato/genetics/GeneticSpec.scala) for a practical example
 * [Example using ScalaJS](https://github.com/rolodato/utn-ia)
+
+# CoNaIISI 2015
+
+Genetics was used for a university project named "Optimización de frecuencias de colectivos con algoritmos genéticos" (Optimization of Bus Frequencies with Genetic Algorithms), published at [CoNaIISI 2015](http://conaiisi2015.utn.edu.ar/).
+You can read the full paper and poster here: https://github.com/rolodato/genetics/releases/tag/CoNaIISI-2015
